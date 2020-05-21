@@ -3,6 +3,8 @@ import os
 from dotenv import load_dotenv
 from flask import Flask
 
+from direct_upload.models import *
+
 load_dotenv()
 
 

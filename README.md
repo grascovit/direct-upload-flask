@@ -16,4 +16,5 @@ CREATE DATABASE direct_upload;
 ```
 - Create the `.env` file copying the example file: `cp .env.example .env`
 - Input your AWS credentials and change the `DATABASE_URL` if you have custom credentials: `postgresql://<user>:<password>@<host>:<port>/<database_name>`
+- Run the migrations with `flask db upgrade`
 - Run the API with `flask run`
