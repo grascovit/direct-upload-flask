@@ -2,6 +2,7 @@ import os
 
 from dotenv import load_dotenv
 from flask import Flask
+from flask_cors import CORS
 
 from direct_upload.api import api
 from direct_upload.db import db, migrate
@@ -18,5 +19,6 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app, db)
     api.init_app(app)
+    CORS(app)
 
     return app
