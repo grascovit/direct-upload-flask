@@ -1,0 +1,1 @@
+web: gunicorn direct_upload.wsgi:app
