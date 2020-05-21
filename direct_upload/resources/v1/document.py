@@ -9,6 +9,9 @@ parser.add_argument('content_type', type=str)
 
 
 class DocumentsV1(Resource):
+    def get(self):
+        return [document.to_json() for document in Document.query.all()]
+
     def post(self):
         args = parser.parse_args()
         document = Document(name=args['name'], content_type=args['content_type'])
