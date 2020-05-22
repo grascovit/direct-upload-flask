@@ -31,3 +31,12 @@ def get_presigned_post(key, content_type):
             {'Content-Type': content_type}
         ]
     )
+
+
+def upload_file(file):
+    return __get_s3_client().put_object(
+        Bucket=os.environ.get('AWS_BUCKET'),
+        Key=file.filename,
+        Body=file,
+        ContentType=file.headers['Content-Type']
+    )

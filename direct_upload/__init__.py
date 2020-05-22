@@ -13,6 +13,7 @@ load_dotenv()
 
 def create_app():
     app = Flask(__name__)
+    app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -20,5 +21,10 @@ def create_app():
     migrate.init_app(app, db)
     api.init_app(app)
     CORS(app)
+
+    from direct_upload.views import blueprint, document_blueprint
+
+    app.register_blueprint(blueprint)
+    app.register_blueprint(document_blueprint)
 
     return app
