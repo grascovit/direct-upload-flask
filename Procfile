@@ -1,1 +1,1 @@
-web: gunicorn direct_upload.wsgi:app
+web: gunicorn --timeout 120 direct_upload.wsgi:app
